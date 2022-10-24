@@ -9,5 +9,7 @@ Use a separat potentiometer in controlling each of thecolor of the RGB led (Red,
 Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and wires (per logic)
 
    Picture of setup :
+   
+   
 ![rgbpot](https://user-images.githubusercontent.com/79654042/197527552-16f3c33b-eb0d-4cef-8011-cee6844fa21c.jpeg)
 
