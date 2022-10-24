@@ -5,7 +5,9 @@ Homework nr1.
 
 Task Requirements:
 Use a separat potentiometer in controlling each of thecolor of the RGB led (Red,Green andBlue).  The control must be donewithdigital electronics(aka you must read the value of the potentiome-ter with Arduino, and write a mapped value to each of the pins connectedto the led.
+
 Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and wires (per logic)
-Picture of setup :
+
+   Picture of setup :
 ![rgbpot](https://user-images.githubusercontent.com/79654042/197527552-16f3c33b-eb0d-4cef-8011-cee6844fa21c.jpeg)
 
