@@ -13,3 +13,6 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
    
 ![rgbpot](https://user-images.githubusercontent.com/79654042/197527552-16f3c33b-eb0d-4cef-8011-cee6844fa21c.jpeg)
 
+   Video of the setup:
+   https://youtu.be/0gd4UtJibwI
+
