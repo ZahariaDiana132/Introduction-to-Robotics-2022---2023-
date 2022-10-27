@@ -16,6 +16,9 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
    Video of the setup:
    https://youtu.be/0gd4UtJibwI
    
+ Source code: 
+ https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/584f794e456182e03eb7b9ce4ed742b3d89f9d83/Homework1code.ino
+   
  ##Homework nr2.
  
  Task Requirements: You will use 2 LEDs to represent the traffic lights for people (red and green) and 3 LEDs to represent the traffic lights for cars (red, yellow and green).See the states it needs to go through:
@@ -39,3 +42,6 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
 
    Video of the setup:
    https://youtu.be/Hp1TCFuaUxA
+   
+ Source code :
+ https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/584f794e456182e03eb7b9ce4ed742b3d89f9d83/trafficlightsZahariaDiana.ino
