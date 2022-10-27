@@ -23,7 +23,8 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
  Components: 
  
    Picture of setup :
-![WhatsApp Image 2022-10-27 at 8 58 08 PM](https://user-images.githubusercontent.com/79654042/198365936-464d2ab8-2af1-4e85-9ed3-c39e54f95607.jpeg)
+![WhatsApp Image 2022-10-27 at 8 58 08 PM](https://user-images.githubusercontent.com/79654042/198366076-a97d9742-79db-4173-a924-336196737653.jpeg)
+
 
    
    Video of the setup:
