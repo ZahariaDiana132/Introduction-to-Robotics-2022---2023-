@@ -15,4 +15,16 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
 
    Video of the setup:
    https://youtu.be/0gd4UtJibwI
+   
+ ##Homework nr2.
+ 
+ Task Requirements:
 
+ Components: 
+ 
+   Picture of setup :
+![image](https://user-images.githubusercontent.com/79654042/198365600-d3a04814-57cd-4068-89bf-54146c1b51c3.png)
+
+   
+   Video of the setup:
+   https://youtu.be/Hp1TCFuaUxA
