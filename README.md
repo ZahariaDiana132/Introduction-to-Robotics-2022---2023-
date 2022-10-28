@@ -1,7 +1,7 @@
-# Introduction-to-Robotics-2022-2023
+# Introduction to Robotics 2022-2023
 Introduction to Robotics laboratory homeworks, taken in the 3rd year at the Faculty of Mathematics and Computer Science, University of Bucharest. Each homework includes requirements, implementation details, code and image files.
 
-## Homework nr1.
+## Homework nr 1.
 
 Task Requirements:
 Use a separat potentiometer in controlling each of the color of the RGB led (Red,Green and Blue).  The control must be done with digital electronics(aka you must read the value of the potentiometer with Arduino, and write a mapped value to each of the pins connected to the led.
@@ -19,7 +19,7 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
  Source code: 
  https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/584f794e456182e03eb7b9ce4ed742b3d89f9d83/Homework1code.ino
    
- ##Homework nr2.
+ ## Homework nr 2.
  
  Task Requirements: You will use 2 LEDs to represent the traffic lights for people (red and green) and 3 LEDs to represent the traffic lights for cars (red, yellow and green).See the states it needs to go through:
  The system has the following states:
