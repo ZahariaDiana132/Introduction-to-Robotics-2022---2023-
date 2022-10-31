@@ -1,7 +1,8 @@
 # Introduction to Robotics 2022-2023
 Introduction to Robotics laboratory homeworks, taken in the 3rd year at the Faculty of Mathematics and Computer Science, University of Bucharest. Each homework includes requirements, implementation details, code and image files.
 
-## Homework nr 1.
+<details>
+   <summary> Homework nr 1. </summary>
 
 Task Requirements:
 Use a separat potentiometer in controlling each of the color of the RGB led (Red,Green and Blue).  The control must be done with digital electronics(aka you must read the value of the potentiometer with Arduino, and write a mapped value to each of the pins connected to the led.
@@ -18,8 +19,10 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
    
  Source code: 
  https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/584f794e456182e03eb7b9ce4ed742b3d89f9d83/Homework1code.ino
-   
- ## Homework nr 2.
+</details>
+<details>
+<summary> Homework nr 2. </summary>
+
  
  Task Requirements: You will use 2 LEDs to represent the traffic lights for people (red and green) and 3 LEDs to represent the traffic lights for cars (red, yellow and green).See the states it needs to go through:
  The system has the following states:
@@ -37,7 +40,8 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
    
    
    
-![trafficlight](https://user-images.githubusercontent.com/79654042/198366937-addf004a-d371-43d7-ab2c-caa3a48df1ad.jpg)
+![trafficlightt](https://user-images.githubusercontent.com/79654042/198995790-7aebd79b-85f0-4575-9d53-df48ca259c8d.jpg)
+
 
 
    Video of the setup:
@@ -45,3 +49,5 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
    
  Source code :
 https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/0c45ab3f3f20d6ce4297058e2fcf801eec1f93c9/trafficlightsZahariaDianaa.ino
+
+</details>
