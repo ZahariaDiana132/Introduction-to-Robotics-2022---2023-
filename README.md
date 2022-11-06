@@ -51,3 +51,54 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
 https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/0c45ab3f3f20d6ce4297058e2fcf801eec1f93c9/trafficlightsZahariaDianaa.ino
 
 </details>
+<details>
+<summary> Homework nr 3. </summary>
+
+ 
+ Task Requirements: 
+ The system has to have the following states:
+ <details>
+ <summary> State  1 </summary> 
+ (default,  but  also  initiated  after  a  button  press  in  State2):  Current  position  blinking.   Can  use  the  joystick  to  move  fromone  position  to  neighbors.   Short  pressing  the  button  toggles  state2.  Long pressing the button in state 1 resets the entire display byturning all the segments OFF and moving the current position to thedecimal point.
+ </details>
+ 
+ <details>
+ <summary> State  2 </summary>
+ (initiated  after  a  button  press  in  State  1):   The  currentsegment  stops  blinking,  adopting  the  state  of  the  segment  beforeselection (ON or OFF). Toggling the X (or Y, you chose) axis shouldchange  the  segment  state  from  ON  to  OFF  or  from  OFF  to  ON.Clicking the joystick should save the segment state and exit back tostate 1.
+ </details>
+ 
+ 
+ Components: 1  7-segment  display,  1  joystick,  resistors  and  wires  (perlogic)
+ 
+ Picture of setup :
+
+ Video of the setup:
+  
+   
+   
+ Source code :
+
+
+</details>
+
+
+<details>
+<summary> Homework . </summary>
+
+ 
+ Task Requirements: 
+
+ Components: 
+ 
+  Picture of setup :
+   
+
+  Video of the setup:
+  
+   
+ Source code :
+
+
+</details>
+
+
