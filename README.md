@@ -68,13 +68,19 @@ https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/0c
  </details>
  
  
- Components: 1  7-segment  display,  1  joystick,  resistors  and  wires  (perlogic)
+ Components: 1  7-segment  display,  1  joystick,  resistors  and  wires  (per logic)
  
  Picture of setup :
+ 
+ 
+ 
+ 
+ ![7digitDrawDia](https://user-images.githubusercontent.com/79654042/200570969-7841a23c-b425-4f34-bc52-572fd3135037.jpg)
+
 
  Video of the setup:
   
-   
+   https://youtu.be/hj81Vb1BxJY
    
  Source code :
 
