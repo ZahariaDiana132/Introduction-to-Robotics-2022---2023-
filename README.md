@@ -17,8 +17,7 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
    Video of the setup:
    https://youtu.be/0gd4UtJibwI
    
- Source code: 
- https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/584f794e456182e03eb7b9ce4ed742b3d89f9d83/Homework1code.ino
+ [Source code](https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/584f794e456182e03eb7b9ce4ed742b3d89f9d83/Homework1code.ino)
 </details>
 <details>
 <summary> Homework nr 2. </summary>
@@ -47,8 +46,7 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
    Video of the setup:
    https://youtu.be/Hp1TCFuaUxA
    
- Source code :
-https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/0c45ab3f3f20d6ce4297058e2fcf801eec1f93c9/trafficlightsZahariaDianaa.ino
+ [Source code](https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/0c45ab3f3f20d6ce4297058e2fcf801eec1f93c9/trafficlightsZahariaDianaa.ino)
 
 </details>
 <details>
@@ -82,8 +80,7 @@ https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/0c
   
    https://youtu.be/hj81Vb1BxJY
    
- Source code :
-https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/2d9dfeab612dbe0fc8211f4fcba87e369f83afcd/7digitDrawDiana.ino
+ [Source code](https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/2d9dfeab612dbe0fc8211f4fcba87e369f83afcd/7digitDrawDiana.ino)
 
 </details>
 
@@ -102,8 +99,7 @@ https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/2d
   Video of the setup:
   
    
- Source code :
-https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/85ddd8878d859c4d130e21bd68423a77ec237036/4_7digitCountDiana.ino
+ [Source code](https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/85ddd8878d859c4d130e21bd68423a77ec237036/4_7digitCountDiana.ino)
 
 </details>
 
