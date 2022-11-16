@@ -87,9 +87,11 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
  
  Task Requirements: 
 
- Components: 
+ Components: a  joystick,  a  4  digit  7-segment  display,  a  74hc595  shift register
  
-  Picture of setup:
+  Picture of setup:  
+  ![c65f3949-cf6e-42a2-9256-8606f3732794](https://user-images.githubusercontent.com/79654042/202196622-148fced2-562a-46e9-9366-f315e8cc88a7.jpg)
+
 
 
   [Video of the setup]( https://youtu.be/DeK5w3XTYy0)
