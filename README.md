@@ -87,7 +87,7 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
 
  
  Task Requirements: 
- This project consists in manipulating a 4-digit 7-segment display using a joystick. The joystick can be moved by the one axis in the first state to change the current display and by the other axis in the second state to change the display number. State is changed by short pressing the button. Long pressing in the first state causes a reset.
+ The project consists in manipulating a 4-digit 7-segment display using a joystick. The joystick can be moved by the one axis in the first state to change the current display and by the other axis in the second state to change the display number. State is changed by short pressing the button. Long pressing in the first state causes a reset.
 
  Components:
  a  joystick,  a  4  digit  7-segment  display,  a  74hc595  shift register
