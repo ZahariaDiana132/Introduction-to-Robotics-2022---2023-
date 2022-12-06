@@ -110,7 +110,7 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
 
  
   Picture of setup:  
-  ![c65f3949-cf6e-42a2-9256-8606f3732794]()
+
 
 
   [Video of the setup]()
