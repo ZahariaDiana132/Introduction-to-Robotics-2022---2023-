@@ -109,7 +109,8 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
 <summary> Matrix project menu (initial state) </summary>
 
  
-   
+Description : Intermediate state of the project. Game menu that contains necessary settings, an about, tells you how to play and so much more.
+  (more details about the tasks, components in the final version)
    
    
    
