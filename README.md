@@ -109,6 +109,10 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
 <summary> Matrix project menu (initial state) </summary>
 
  
+   
+   
+   
+   
   Picture of setup:  
 
 
