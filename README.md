@@ -115,9 +115,10 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
    
   Picture of setup:  
 
+![WhatsApp Image 2022-12-06 at 21 37 48](https://user-images.githubusercontent.com/79654042/206010543-5798eb6e-5cad-4386-9321-3de67e956d6f.jpeg)
 
 
-  [Video of the setup]()
+  [Video of the setup](https://youtu.be/NFwmhA32Iqs)
   
   
  [Source code](https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/2f16e2fcb79647ecc4efb8dbfcc12fa19d5e843d/proiectmatricemeniu.ino)
