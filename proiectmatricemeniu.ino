@@ -1,4 +1,4 @@
-#include "LedControl.h" //  need the library -> instalezi din tools -> manage libraries si o cauti
+#include "LedControl.h" 
 
 #include <LiquidCrystal.h>
 
@@ -6,11 +6,7 @@
 
 #include "pitches.h"
 
-
-
-
-
-// notes in the melody:
+// notes in the melody for game:
 int melody1[] = {
   NOTE_B4, NOTE_B5, NOTE_FS5, NOTE_DS5,
   NOTE_B5, NOTE_FS5, NOTE_DS5, NOTE_C5,
@@ -55,7 +51,7 @@ const int soundOnOf = 12;
 const int resetHighsc = 13;
 const int exits = 14;
 const int restart = 15;
-int menugame[3] = {menu, game,restart}; // to switch from menu state to game state
+int menugame[3] = {game, menu,restart}; // to switch from menu state to game state
 int menuList[5] = {settings, highScore, howPlay, about, exitt}; // actual menu states
 int settingslist[5] ={ setBright, setDifficulty, soundOnOf, resetHighsc, exits};// settings options
 
@@ -105,6 +101,7 @@ bool readSWB = LOW;
 bool readSWD = LOW;
 bool readSWSD = LOW;
 bool readSWRH = LOW;
+bool readSWStr = LOW;
 bool buttonSWState = LOW;
 bool lastSWButtonPinState = LOW;
 // joystick pins
@@ -353,11 +350,53 @@ byte heart[] = {
 	0b00000
 };
 
+byte arrowUp[] = {
+	0b00000,
+	0b00000,
+	0b00100,
+	0b01110,
+	0b11111,
+	0b00000,
+	0b00000,
+	0b00000
+};
+
+byte arrowDown[] = {
+	0b00000,
+	0b00000,
+	0b00000,
+	0b11111,
+	0b01110,
+	0b00100,
+	0b00000,
+	0b00000
+};
+
+byte clearCell[] = {
+	0b00000,
+	0b00000,
+	0b00000,
+	0b00000,
+	0b00000,
+	0b00000,
+	0b00000,
+	0b00000
+};
+
+
+
 //SUUS
-//music
-// change this to make the song slower or faster
- int scadress = 1;
- int adress = 11;
+ String strr;
+ String stt;
+
+int lenMsg = 168;
+int lenMsg3 = 208;
+int ii = 0;
+int ok = 0;
+int scadress = 1;
+int adress = 11;
+int nmm = adress;
+int pozChr = 0;
 int tempo = 210;
 const long interval = 70;
 unsigned long lastMiillis = 0;
@@ -398,8 +437,8 @@ int durations[] = {
       }
     }
     
-char * messagePadded = "  Project by Zaharia Diana Cristiana, link github : https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023- , Nume: Dance Dance Revolution             ";
-char * messagePadded3 = "  For the left/right collumn press left/right buttons when an overlap occurs, For the middle collumn dependin on if a dot overlaps in the left/right side move the joystick to the left/right side           ";
+const char  messagePadded[] PROGMEM = "  Project by Zaharia Diana Cristiana, link github : https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023- , Nume: Dance Dance Revolution             ";
+const char  messagePadded3[] PROGMEM = "  For the left/right collumn press left/right buttons when an overlap occurs, For the middle collumn dependin on if a dot overlaps in the left/right side move the joystick to the left/right side           ";
 int letter = 0;
 int letter3 = 0;
 int poz = 0;
@@ -426,12 +465,15 @@ int joyYD = 0;
 int joyXH = 0;
 int joyYSD = 0;
 int joyYRH = 0;
+int joyXSS = 0;
 bool joyIsNeutral = true;
 unsigned long lastExecutedMillis;
 int state = 0; 
 int repeatSound = 0 ;
 int noteLength2;
 int n1,n2,n3,n4,n5; //adrese nume highscore
+int scoreStat = 0; // nu e highscore
+int highS = 1;
 
 // top 5 highscore names
 
@@ -466,6 +508,9 @@ void setup() {
   lcd.createChar(0, arrow);
   lcd.createChar(1, heart);
   lcd.createChar(2, smile);
+  lcd.createChar(3, arrowUp);
+  lcd.createChar(4, arrowDown);
+  lcd.createChar(5, clearCell);
   lc.shutdown(0, false); // turn off power saving, enables display
   lc.clearDisplay(0);// clear screen
   sound =  EEPROM.read(SOUND_ADDR);
@@ -591,27 +636,40 @@ void loop() {
   if( poz == 0){
    lcd.setCursor(0, 0);
    lcd.write(byte(0)); 
-   lcd.print(" MENU     ");
+   lcd.print(" PLAY GAME");
+   lcd.setCursor(15, 0);
+   lcd.write(byte(5)); 
    lcd.setCursor(0, 1);
-   lcd.print("  PLAY GAME");
-   displayImageSetup(images[17]);
+   lcd.print("  MENU     ");
+   lcd.setCursor(15, 1);
+   lcd.write(byte(4)); 
+   displayImageSetup(images[13]);
    }
   else if(poz == 1)
   {
    lcd.setCursor(0, 0);
    lcd.write(byte(0)); 
-   lcd.print(" PLAY GAME");
+   lcd.print(" MENU     ");
+   lcd.setCursor(15, 0);
+   lcd.write(byte(3)); 
    lcd.setCursor(0, 1);
    lcd.print("  RESTART    ");
-  displayImageSetup(images[13]);
+   lcd.setCursor(15, 1);
+   lcd.write(byte(4)); 
+   displayImageSetup(images[17]);
+ 
   }
   else {
     
    lcd.setCursor(0, 0);
-   lcd.print("  PLAY GAME");
+   lcd.print("  MENU     ");
+   lcd.setCursor(15, 0);
+   lcd.write(byte(3));
    lcd.setCursor(0, 1);
    lcd.write(byte(0)); 
    lcd.print(" RESTART     ");
+   lcd.setCursor(15, 1);
+   lcd.write(byte(5)); 
    displayImageSetup(images[7]); 
 
   }
@@ -662,40 +720,60 @@ void loop() {
       lcd.setCursor(0, 0);
       lcd.write(byte(0)); 
       lcd.print(" SETTINGS");
+      lcd.setCursor(15, 0);
+      lcd.write(byte(5)); 
       lcd.setCursor(0, 1);
       lcd.print("  HIGHSCORE");
+      lcd.setCursor(15, 1);
+      lcd.write(byte(4)); 
     }
     else if(poz2 == 1){
       displayImageSetup(images[10]);
       lcd.setCursor(0, 0);
       lcd.write(byte(0)); 
       lcd.print(" HIGHSCORE");
+      lcd.setCursor(15, 0);
+      lcd.write(byte(3)); 
       lcd.setCursor(0, 1);
       lcd.print("  HOW TO PLAY");
+      lcd.setCursor(15, 1);
+      lcd.write(byte(4)); 
     }
     else if(poz2 == 2){
       displayImageSetup(images[11]);
       lcd.setCursor(0, 0);
       lcd.write(byte(0)); 
       lcd.print(" HOW TO PLAY");
+      lcd.setCursor(15, 0);
+      lcd.write(byte(3)); 
       lcd.setCursor(0, 1);
       lcd.print("  ABOUT");
+      lcd.setCursor(15, 1);
+      lcd.write(byte(4)); 
     }
     else if(poz2 == 3) {
       displayImageSetup(images[12]);
       lcd.setCursor(0, 0);
       lcd.write(byte(0));
       lcd.print(" ABOUT");
+      lcd.setCursor(15, 0);
+      lcd.write(byte(3));
       lcd.setCursor(0, 1); 
       lcd.print("  EXIT");
+      lcd.setCursor(15, 1);
+      lcd.write(byte(4));
     }
     else {
       displayImageSetup(images[7]);
       lcd.setCursor(0, 0);
       lcd.print("  ABOUT");
+      lcd.setCursor(15, 0);
+      lcd.write(byte(3));
       lcd.setCursor(0, 1);
       lcd.write(byte(0)); 
       lcd.print(" EXIT");
+      lcd.setCursor(15, 1);
+      lcd.write(byte(5));
     }
   readSW2 = digitalRead(pinSW);
    if (readSW2 != lastState) {
@@ -738,24 +816,36 @@ void loop() {
       lcd.setCursor(0, 0);
       lcd.write(byte(0)); 
       lcd.print(" SET BRIGHTNESS");
+      lcd.setCursor(15, 0);
+      lcd.write(byte(5));
       lcd.setCursor(0, 1);
       lcd.print("  DIFFICULTY");
+      lcd.setCursor(15, 1);
+      lcd.write(byte(4));
     }
     else if(poz22 == 1){
       displayImageSetup(images[15]);
       lcd.setCursor(0, 0);
       lcd.write(byte(0)); 
       lcd.print(" DIFFICULTY");
+      lcd.setCursor(15, 0);
+      lcd.write(byte(3));
       lcd.setCursor(0, 1);
       lcd.print("  SOUND ON/OFF");
+      lcd.setCursor(15, 1);
+      lcd.write(byte(4));
     }
     else if( poz22 == 2 ){
       displayImageSetup(images[16]);
       lcd.setCursor(0, 0);
       lcd.write(byte(0));
       lcd.print(" SOUND ON/OFF");
+      lcd.setCursor(15, 0);
+      lcd.write(byte(3));
       lcd.setCursor(0, 1); 
       lcd.print("  RESET HIGH");
+      lcd.setCursor(15, 1);
+      lcd.write(byte(4));
 
     }
     else if( poz22 == 3 ){
@@ -763,17 +853,25 @@ void loop() {
       lcd.setCursor(0, 0);
       lcd.write(byte(0));
       lcd.print(" RESET HIGH");
+      lcd.setCursor(15, 0);
+      lcd.write(byte(3));
       lcd.setCursor(0, 1); 
       lcd.print("  EXIT->MENU");
+      lcd.setCursor(15, 1);
+      lcd.write(byte(4));
 
     }
     else {
       displayImageSetup(images[7]);
       lcd.setCursor(0, 0);
       lcd.print("  RESET HIGH");
+      lcd.setCursor(15, 0);
+      lcd.write(byte(3));
       lcd.setCursor(0, 1); 
       lcd.write(byte(0));
       lcd.print(" EXIT->MENU");
+      lcd.setCursor(15, 1);
+      lcd.write(byte(5));
 
     }
 
@@ -807,7 +905,7 @@ void loop() {
     lcd.setCursor(0, 0);
     lcd.print("INSTRUCTIONS: ");
     letter3 = joyStickScroll2(letter3);
-    if(letter3 <= strlen(messagePadded3) - 16)
+    if(letter3 <= lenMsg3 - 16)
   {
     showLetters3(0, letter3);
   }
@@ -844,7 +942,7 @@ void loop() {
     lcd.print("INFO: ");
     letter = joyStickScroll(letter);
    //From 0 to upto n-16 characters supply to below function
-  if( letter <=  strlen(messagePadded) - 16)
+  if( letter <= (lenMsg - 16) )
     showLetters(0, letter);
    
    readSWSS = digitalRead(pinSW);
@@ -1019,26 +1117,29 @@ void loop() {
  if( state == resetHighsc){
   
   lcd.setCursor(0,0);
-  lcd.print("RIGHT=RESET");
+  lcd.print(" RIGHT=RESET ");
+
   opt = joyStickOPT(opt);
 
   if(opt == ON){
-
-   for (int i = 0; i < 5; i++)
-    scores[i] = EEPROM.read((scadress + i));
   
-
-     for (int i = 0; i < 5; i++)
+   for (int i = 0; i < 5; i++)
     EEPROM.update((scadress + i) , 0);
 
-  String str1 = "BBB ";
-  String str2 = "LLL ";
+  for (int i = 0; i < 5; i++)
+    scores[i] = EEPROM.read((scadress + i));
 
+  String str1 = "AAA ";
+  String str2 = "BBB";
+  String str3 = "CCC";
+  String str4 = "DDD";
+  String str5 = "EEE";
   int nm1 = writeStringToEEPROM(adress, str1);
-  int nm2 = writeStringToEEPROM(nm1, str1);
-  int nm3 = writeStringToEEPROM(nm2, str1);
-  int nm4 = writeStringToEEPROM(nm3, str1);
-  writeStringToEEPROM(nm4, str1);
+  int nm2 = writeStringToEEPROM(nm1, str2);
+  int nm3 = writeStringToEEPROM(nm2, str3);
+  int nm4 = writeStringToEEPROM(nm3, str4);
+  writeStringToEEPROM(nm4, str5);
+
 
   int num1 = readStringFromEEPROM(adress, &st1);
   int num2 = readStringFromEEPROM(num1, &st2);
@@ -1099,7 +1200,6 @@ void loop() {
      lcd.clear();
      displayImageSetup(images[1]);
   if(lastMiillis == interval) {
-      int init = 0; 
       intro = 2;
       }
    }
@@ -1118,18 +1218,145 @@ void loop() {
    joyStickGame(nrlives,score);
    buttonLeftPress();
    buttonRightPress();
+
    if(nrlives == 0){
-     lcd.print("GAME OVER");
-     noTone(buzzerPin);
+     isItHigh(score, ii, scoreStat);
+     if( scoreStat != highS)
+    {  
+      lcd.setCursor(0, 0);
+      lcd.print("GAME OVER");
+      noTone(buzzerPin);
      delay(1000);
      lcd.clear();
+     intro = 0;
+     lastMiillis = 0;
      nrlives = 4;
      score = 0;
+     scoreStat = 0;
+     ii = 0;
+     pozChr = 0;
      state = choice;
+    }
+    else
+    { 
+      for(int i = ii; i < 4; i=i+2){
+      EEPROM.update((scadress + i+1) , scores[i]);
+      scores[i+1] = EEPROM.read((scadress + i + 1));
+       }
+      EEPROM.update((scadress + ii) , score);
+      scores[ii] = EEPROM.read((scadress + ii));
+
+    noTone(buzzerPin);
+     delay(1000);
+     lcd.clear();
+     intro = 0;
+     lastMiillis = 0;
+     nrlives = 4;
+     score = 0;
+     scoreStat = 0;
+     ii = 0;
+     pozChr = 0;
+     state = choice;
+
+
+      }
+
+     
      }
+
    }
+
   }
 
+
+}
+
+void  isItHigh(int score, int &ii, int &scoreStat)
+{ 
+  
+   while(ii < 5 && scoreStat == 0 && score != 0){
+    if(score > scores[ii]){
+      scoreStat = 1; 
+      ii--;
+    }
+    ii++;
+   }
+
+  
+}
+void printSettingsName(String str)
+{
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Set name");
+    lcd.setCursor(0, 1);
+    lcd.print(str);
+    lcd.setCursor(pozChr, 1);
+    lcd.blink();
+}
+
+
+String joyStickStrCh( String &str, int &pozChr){
+  joyXSS = analogRead(joyXPin);
+  char name[4]; // str = String(name);
+  str.toCharArray(name,4);
+  
+
+   if(joyXSS < joyDownThreshold && joyIsNeutral) { 
+     Serial.println("up");
+     joyStkSound();
+     joyIsNeutral = false;
+     if(name[pozChr] < 'Z')
+     name[pozChr] ++;
+     else
+     name[pozChr] = 'A';
+     str = String(name);
+     printSettingsName(str);
+     return str;
+
+   }
+    if(joyXSS > joyUpThreshold && joyIsNeutral) { 
+      joyIsNeutral = false;
+      joyStkSound();
+      Serial.println("down");
+      if(name[pozChr] > 'A')
+       name[pozChr] --;
+      else
+       name[pozChr] = 'Z';
+      str = String(name);
+      printSettingsName(str);
+      return str;
+
+    }
+
+
+    
+     if(joyY > joyRightThreshold && joyIsNeutral) { 
+      joyIsNeutral = false;
+      Serial.println("left");
+      joyStkSound();
+      if(pozChr > 0)
+        pozChr--;
+      printSettingsName(str);
+      return str;
+
+    }
+    if(joyY < joyLeftThreshold && joyIsNeutral) { 
+      joyIsNeutral = false;
+      Serial.println("right");
+      joyStkSound();
+      if(pozChr < 3)
+        pozChr++;
+      printSettingsName(str);
+      return str;
+
+    }
+    
+     if(joyLeftThreshold <= joyY && joyY <= joyRightThreshold && joyDownThreshold <= joyX && joyX <= joyUpThreshold) {
+       joyIsNeutral = true; 
+       printSettingsName(str);
+       return str;
+    }
 
 }
 void showLetters(int print, int start1)
@@ -1137,7 +1364,7 @@ void showLetters(int print, int start1)
     lcd.setCursor(print, 1);
    for (int letter = start1; letter <= start1 + 15; letter++) 
   {
-    lcd.print(messagePadded[letter]);
+    lcd.write(pgm_read_byte_near(messagePadded + letter));
   }
     lcd.print(" ");
 
@@ -1149,7 +1376,7 @@ void showLetters3(int printStart, int startLetter)
   lcd.setCursor(printStart, 1);
   for (int letter3 = startLetter; letter3 <= startLetter + 15; letter3++) 
   {
-    lcd.print(messagePadded3[letter3]);
+    lcd.write(pgm_read_byte_near(messagePadded3 + letter3));
   }
 
   lcd.print(" ");
@@ -1194,7 +1421,7 @@ void buttonLeftPress(){
 }
 
 
-byte joyStickOPT(byte &opt){ 
+byte joyStickOPT(byte opt){ 
      
      joyYRH = analogRead(joyYPin);
 
@@ -1203,7 +1430,7 @@ byte joyStickOPT(byte &opt){
       Serial.println("LEFT");
       joyStkSound();
       lcd.setCursor(0, 1);
-      lcd.print("NU VREAU     ");
+      lcd.print("No thanks      ");
       opt = OFF;
       return opt;
    
@@ -1213,7 +1440,7 @@ byte joyStickOPT(byte &opt){
       Serial.println("RIGHT");
       joyStkSound();
       lcd.setCursor(0, 1);
-      lcd.print("AM RESETAT   ");
+      lcd.print("RESET PENDING  ");
       opt = ON;
       return opt;
     
@@ -1223,9 +1450,9 @@ byte joyStickOPT(byte &opt){
        joyIsNeutral = true; 
        lcd.setCursor(0, 1);
        if(opt == OFF)
-       lcd.print("NU VREAU      ");
+       lcd.print("NOPE          ");
        else
-       lcd.print("AM DAT RESET ");
+       lcd.print("RESET         ");
        return opt;
      
   }
@@ -1290,7 +1517,7 @@ int joyStickMenu(int aleg[], int n, int poz){ //for menu choices
   }
 }
 
-int joyStickHigh(int &currentPoz){
+int joyStickHigh(int currentPoz){
      joyXH = analogRead(joyXPin);
    if(joyXH < joyDownThreshold && joyIsNeutral) { 
      Serial.println("up");
@@ -1517,7 +1744,7 @@ byte joyStickSound(byte sound){
 }
 
 
-int joyStickDif(int &activeDifficulty){ 
+int joyStickDif(int activeDifficulty){ 
      
      joyYD = analogRead(joyYPin);
 
@@ -1555,7 +1782,7 @@ int joyStickDif(int &activeDifficulty){
   }
 }
 
-int joyStickBright(int &matrixBrightness){ 
+int joyStickBright(int matrixBrightness){ 
      
      joyYB = analogRead(joyYPin);
 
@@ -1597,7 +1824,7 @@ int joyStickBright(int &matrixBrightness){
   }
 }
 
-int joyStickScroll(int &start){ 
+int joyStickScroll(int start){ 
      
      joyGY1 = analogRead(joyYPin);
 
@@ -1605,7 +1832,7 @@ int joyStickScroll(int &start){
       joyIsNeutral = false;
       Serial.println("LEFT");
       joyStkSound();
-      if(start <= strlen(messagePadded) - 16 - 11)
+      if(start <=  (lenMsg - 16 - 11))
       start=start + 11;
       return start;
    
@@ -1627,7 +1854,7 @@ int joyStickScroll(int &start){
   }
 }
 
-int joyStickScroll2(int &start2){ 
+int joyStickScroll2(int start2){ 
      
      joyGY2 = analogRead(joyYPin);
 
@@ -1635,7 +1862,7 @@ int joyStickScroll2(int &start2){
       joyIsNeutral = false;
       Serial.println("LEFT");
       joyStkSound();
-      if(start2 <= strlen(messagePadded3) - 16 - 11)
+      if(start2 <= lenMsg3 - 16 - 11)
       start2 = start2 + 11;
       return start2;
 
