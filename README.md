@@ -123,9 +123,9 @@ Description : Intermediate state of the project. Game menu that contains necessa
   
   [Video of the setup modified](https://youtu.be/Li9PKt_7hw8)
   
- [Source code initial - 84% memory usage](https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/2f16e2fcb79647ecc4efb8dbfcc12fa19d5e843d/proiectmatricemeniu.ino)
+ [Source code initial(in history) - 84% memory usage + modified 64% mem usage ](https://github.com/ZahariaDiana132/Introduction-to-Robotics-2022---2023-/blob/2f16e2fcb79647ecc4efb8dbfcc12fa19d5e843d/proiectmatricemeniu.ino)
  
- [Source code modified - 64% mem used]()
+
 
 </details>
 
