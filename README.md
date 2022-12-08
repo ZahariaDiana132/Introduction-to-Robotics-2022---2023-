@@ -109,8 +109,29 @@ Components:  RBG  LED  (1  minimum),  potentiometers  (3  minimum),resistors and
 <summary> Matrix project menu (initial state) </summary>
 
  
-Description : Intermediate state of the project. Game menu that contains necessary settings, an about, tells you how to play and so much more.
+Description : Intermediate state of the project. Game menu that contains necessary settings(saved in eeprom), an about, tells you how to play and so much more.
   (more details about the tasks, components in the final version)
+   
+Bugs/Missing:
+   -- the highscore only updates the score not the name of the player for now --
+   -- sometimes the screen looks weird(most likely an alimentation problem)--
+   -- joystick button is weird, doesn't always press right --
+   -- no setting for lcd brightness(always conected through resistor to 5V) because buzzer messed with it and I preffer music over changing how bright the screen is--
+   --for now a lot of Serial.prints that help me see the code functions corectly but will further be deleted after I complete the project--
+   
+   
+ Components Used:
+
+1 LCD
+1 1088AS matrix
+1 MAX7219 LED Driver
+1 joystick
+1 passive buzzer
+1 potentiometer (for controlling the LCD contrast)
+1 10μF, 50V electrolytic capacitor
+1 (104) 0.1μF ceramic capacitor
+2 buttons (not yet used)
+resistors and wires (per logic)
    
    
    
