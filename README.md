@@ -122,16 +122,26 @@ Bugs/Missing:
    
  Components Used:
 
-1 LCD
-1 1088AS matrix
-1 MAX7219 LED Driver
-1 joystick
-1 passive buzzer
-1 potentiometer (for controlling the LCD contrast)
-1 10μF, 50V electrolytic capacitor
-1 (104) 0.1μF ceramic capacitor
-2 buttons (not yet used)
-resistors and wires (per logic)
+   1 LCD,
+   
+   1 1088AS matrix,
+   
+   1 MAX7219 LED Driver,
+   
+   1 joystick,
+   
+   1 passive buzzer,
+   
+   1 potentiometer (for controlling the LCD contrast),
+   
+   1 10μF, 50V electrolytic capacitor,
+   
+   1 (104) 0.1μF ceramic capacitor,
+   
+   2 buttons (not yet used),
+   
+   resistors and wires (per logic)
+   
    
    
    
