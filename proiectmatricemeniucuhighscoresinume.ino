@@ -332,7 +332,77 @@ const byte images[][8] {
   0b10000010,
   0b10000010,
   0b10000010
-  }
+  },
+  {
+  0b00000000,
+  0b00011000,
+  0b00111100,
+  0b00111100,
+  0b00011000,
+  0b01111110,
+  0b11111111,
+  0b11111111
+  },
+  {
+  0b00000000,
+  0b01011100,
+  0b01100010,
+  0b01110010,
+  0b00000010,
+  0b00000010,
+  0b00111100,
+  0b00000000
+  },
+  {
+  0b00001000,
+  0b00011000,
+  0b00101000,
+  0b01001000,
+  0b00001000,
+  0b00001000,
+  0b00001000,
+  0b00001000
+},
+{
+  0b00111000,
+  0b01000100,
+  0b01000100,
+  0b00000100,
+  0b00001000,
+  0b00010000,
+  0b00100000,
+  0b01111110
+},
+{
+  0b00111000,
+  0b01000100,
+  0b00000100,
+  0b00011000,
+  0b00011000,
+  0b00000100,
+  0b01000100,
+  0b00111000
+},
+{
+  0b00000000,
+  0b00010000,
+  0b00110100,
+  0b11110010,
+  0b11110010,
+  0b00110100,
+  0b00010000,
+  0b00000000
+},
+{
+  0b00000000,
+  0b00010000,
+  0b00110000,
+  0b11110101,
+  0b11110010,
+  0b00110101,
+  0b00010000,
+  0b00000000
+}
 
 
 };
@@ -516,6 +586,8 @@ char scoreNames[5][4];
 
 
 
+
+
 // top 5 scores
 int scores[5];
 
@@ -693,7 +765,7 @@ void loop() {
    lcd.print(" RESTART     ");
    lcd.setCursor(15, 1);
    lcd.write(byte(5)); 
-   displayImageSetup(images[7]); 
+   displayImageSetup(images[19]); 
 
   }
 
@@ -838,13 +910,14 @@ void loop() {
 
 
    if(poz22 == 0){
+       displayImageSetup(images[18]);
       lcd.setCursor(0, 0);
       lcd.print("                ");
       lcd.setCursor(15, 0);
       lcd.write(byte(5));
       lcd.setCursor(0, 1);
       lcd.write(byte(0));
-      lcd.print(" Set Name");
+      lcd.print(" SET NAME");
       lcd.setCursor(15, 1);
       lcd.write(byte(4));
    }
@@ -975,7 +1048,7 @@ void loop() {
   if(state == setName)
   {
     lcd.setCursor(0, 0);
-    lcd.print("UR NAME: ");
+    lcd.print("YOUR NAME: ");
     pozChr = joyStickSetName(pozChr);
   
     lcd.setCursor(pozChr, 1);
@@ -1002,7 +1075,7 @@ void loop() {
       buttonSWState = readSWSTN;
       if (buttonSWState == LOW)
       {
-        state = menu;
+        state = settings;
         strr = (String)name;
         lcd.clear();
         lastState = 0;
@@ -1131,10 +1204,14 @@ void loop() {
 
   if(state == setDifficulty){
 
-
-
-   displayImageSetup(images[15]);
     activeDifficulty = joyStickDif(activeDifficulty);
+    if(activeDifficulty == 1)
+        displayImageSetup(images[20]);
+    else if(activeDifficulty == 2)
+        displayImageSetup(images[21]);
+    else
+        displayImageSetup(images[22]);
+
    EEPROM.update( DIFFIC_ADDR , activeDifficulty);
  readSWD = digitalRead(pinSW);
    if (readSWD != lastState) {
@@ -1162,6 +1239,11 @@ void loop() {
   } //EEPROM
 
   if(state == soundOnOf){
+
+  if(sound == ON)
+   displayImageSetup(images[23]);
+  else
+   displayImageSetup(images[24]);
 
    lcd.setCursor(0, 0);
    lcd.print("js L/R -> ON/OFF");
@@ -1208,30 +1290,26 @@ void loop() {
   for (int i = 0; i < 5; i++)
     scores[i] = EEPROM.read((scadress + i));
 
-  String str1 = "AAA";
-  String str2 = "BBB";
-  String str3 = "CCC";
-  String str4 = "DDD";
-  String str5 = "EEE";
+  String str1 = "   ";
   int nm1 = writeStringToEEPROM(adress, str1);
+  int nm2 = writeStringToEEPROM(nm1, str1);
+  int nm3 = writeStringToEEPROM(nm2, str1);
+  int nm4 = writeStringToEEPROM(nm3, str1);
+  writeStringToEEPROM(nm4, str1);
 
-  int nm2 = writeStringToEEPROM(nm1, str2);
-  int nm3 = writeStringToEEPROM(nm2, str3);
-  int nm4 = writeStringToEEPROM(nm3, str4);
-  writeStringToEEPROM(nm4, str5);
 
-
-  int num1 = readStringFromEEPROM(adress, &st1);
-  int num2 = readStringFromEEPROM(num1, &st2);
-  int num3 = readStringFromEEPROM(num2, &st3);
-  int num4 = readStringFromEEPROM(num3, &st4);  
-  readStringFromEEPROM(num4, &st5);
+  int nume1 = readStringFromEEPROM(adress, &st1); 
+  int nume2 = readStringFromEEPROM(nume1, &st2);
+  int nume3 = readStringFromEEPROM(nume2, &st3);
+  int nume4 = readStringFromEEPROM(nume3, &st4);  
+  readStringFromEEPROM(nume4, &st5);
 
   st1.toCharArray(scoreNames[0],4);
   st2.toCharArray(scoreNames[1],4);
   st3.toCharArray(scoreNames[2],4);
   st4.toCharArray(scoreNames[3],4);
   st5.toCharArray(scoreNames[4],4);
+
   }
 
      readSWRH = digitalRead(pinSW);
@@ -1265,7 +1343,7 @@ void loop() {
   if (state == game){
 
   buzzer.loop(); // MUST call the buzzer.loop() function in loop()
-
+ if(sound == ON ){
   if (buzzer.getState() == BUZZER_IDLE) { // if stopped
    if(activeDifficulty == 1)
     buzzer.playMelody(melody1, noteDurations, noteLength); // playing
@@ -1274,7 +1352,7 @@ void loop() {
      else
      buzzer.playMelody(melody1, noteDurations2, noteLength); // playing
   }
-
+}
 
    if(intro == 0){
    lastMiillis++;
@@ -1757,7 +1835,7 @@ void joyStickGame(int &nr, int &score){ //for game
      joyGY = analogRead(joyYPin);
    if(joyGX < joyDownThreshold && joyIsNeutral) { 
      lcd.clear();
-     if(nr <= 4){
+     if(nr < 4){
       nr++;
      }
      joyIsNeutral = false;
